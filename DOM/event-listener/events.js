@@ -7,7 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
       redButton.style.backgroundColor = "red";
     }
   });
-
+  //  add item to list
   const input = document.getElementById("list-add");
   let text = "";
   input.addEventListener("change", (e) => {
@@ -20,4 +20,12 @@ window.addEventListener("DOMContentLoaded", () => {
     li.textContent = text;
     list.appendChild(li);
   });
+  // change color
+  const inputColor = document.getElementById("color-select");
+  inputColor.addEventListener("change", (e) => {
+    const color = e.target.value;
+    const section = document.getElementById("section-3");
+    section.style.backgroundColor = color;
+  });
+  //remove listener
 });
