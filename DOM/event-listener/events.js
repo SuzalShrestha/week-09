@@ -28,4 +28,32 @@ window.addEventListener("DOMContentLoaded", () => {
     section.style.backgroundColor = color;
   });
   //remove listener
+  const removeListener = document.getElementById("remove-listeners");
+  removeListener.addEventListener("click", () => {
+    inputColor.removeEventListener("change", (e) => {
+      const color = e.target.value;
+      const section = document.getElementById("section-3");
+      section.style.backgroundColor = color;
+    });
+    button.removeEventListener("click", () => {
+      const list = document.querySelector("ul");
+      const li = document.createElement("li");
+      li.textContent = text;
+      list.appendChild(li);
+    });
+    input.removeEventListener("change", (e) => {
+      text = e.target.value;
+    });
+    redButton.removeEventListener("input", (e) => {
+      if(e.target.value === "red"){
+        redButton.style.backgroundColor = "red";
+      
+    }});
+    window.removeEventListener("DOMContentLoaded", () => {
+      console.log("DOM fully loaded and parsed");
+    });
+
+
+  });
+
 });
