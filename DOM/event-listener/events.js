@@ -45,15 +45,29 @@ window.addEventListener("DOMContentLoaded", () => {
       text = e.target.value;
     });
     redButton.removeEventListener("input", (e) => {
-      if(e.target.value === "red"){
+      if (e.target.value === "red") {
         redButton.style.backgroundColor = "red";
-      
-    }});
+      }
+    });
     window.removeEventListener("DOMContentLoaded", () => {
       console.log("DOM fully loaded and parsed");
     });
-
-
+  });
+  //event listener which triggers alert when space bar is pressed
+  window.addEventListener("keydown", (e) => {
+    if (e.code === "Space") {
+      alert("Space bar pressed");
+    }
+  });
+  //create a event listener which triggers when hovering over a div element
+  const div = document.getElementById("hover-div");
+  div.addEventListener("mouseover", () => {
+    div.innerText = "Hovering over me!";
+    //return back after mouse is out
+  }
+  );
+  div.addEventListener("mouseout", () => {
+    div.innerText = "Hover over me!";
   });
 
 });
