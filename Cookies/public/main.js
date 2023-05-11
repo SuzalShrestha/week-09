@@ -38,11 +38,16 @@ function storeName(displayName) {
 // For restoring user's display name from cookies, if set in the past
 function restoreName() {
     // Your code here
+    const name=document.cookie.split("; ").find((cookie)=>cookie.startsWith("displayName"));
+    if(name){
+        setInputValue("display-name",name.split("=")[1]);
+    }
 }
 
 // For clearing user's display name from cookies
 function clearName() {
     // Your code here
+    document.cookie=`displayName=;expires=Thu, 01 Jan 1970 00:00:00 GMT`;
 }
 
 /* ========================================================================= */
