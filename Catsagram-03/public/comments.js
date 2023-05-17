@@ -80,7 +80,7 @@ const submitComment = e => {
     commentInput.value = "";
 }
 
-const createComment = (commentText) => {
+export const createComment = (commentText) => {
     const newCommentContainer = document.createElement('div');
     newCommentContainer.style.display = "flex";
     newCommentContainer.style.margin = "10px";

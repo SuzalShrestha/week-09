@@ -24,13 +24,22 @@ export const createMainContent = () => {
 const fetchImage = async () => {
     // Fetch image from API and set img url
     try {
-        const kittenResponse = await fetch("https://api.thecatapi.com/v1/images/search?size=small");
-        // Converts to JSON
-        const kittenData = await kittenResponse.json();
-        // console.log(kittenData);
-        const kittenImgUrl = kittenData[0].url;
-        const kittenImg = document.querySelector("img");
-        kittenImg.src = kittenImgUrl;
+        let kittenImgUrl;
+        let kittenImg;
+        if(sessionStorage.getItem("url")){
+            kittenImgUrl=sessionStorage.getItem("url");
+            const kittenImg = document.querySelector("img");
+            kittenImg.src = kittenImgUrl;
+        }else{
+            const kittenResponse = await fetch("https://api.thecatapi.com/v1/images/search?size=small");
+            // Converts to JSON
+            const kittenData = await kittenResponse.json();
+            // console.log(kittenData);
+            kittenImgUrl = kittenData[0].url;
+            kittenImg = document.querySelector("img");
+            kittenImg.src = kittenImgUrl;
+            sessionStorage.setItem("url",kittenImgUrl);
+        }
 
         // After the image is finished loading, reset the score and comments
         kittenImg.addEventListener('load', () => {
@@ -47,6 +56,9 @@ const createNewKittenBtn = () => {
     const newKittenBtn = document.createElement("button");
     newKittenBtn.id = "new-kitten";
     newKittenBtn.innerText = "New Kitten";
-    newKittenBtn.addEventListener('click', fetchImage);
+    newKittenBtn.addEventListener('click', ()=>{
+        sessionStorage.removeItem("url");
+        fetchImage();
+    });
     return newKittenBtn;
 };
