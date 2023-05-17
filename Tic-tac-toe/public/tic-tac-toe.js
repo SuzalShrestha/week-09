@@ -48,6 +48,7 @@ window.addEventListener("DOMContentLoaded", () => {
     newGame.disabled = true;
     winner = "None";
     playerTurn = "X";
+    giveUp.disabled = false;
   });
 
   newGame.disabled = true;
