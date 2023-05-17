@@ -65,7 +65,7 @@ const vote = e => {
     } else {
         newScore = parseInt(newScore) - 1;
     }
-    
+    sessionStorage.setItem("score",newScore);
     // update score
     updateScore(newScore);
 };

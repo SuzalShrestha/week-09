@@ -78,6 +78,7 @@ const submitComment = e => {
     const commentText = commentInput.value;
     createComment(commentText);
     commentInput.value = "";
+    sessionStorage.setItem( "comments",JSON.stringify(Array.from(document.querySelector(".comments").children).map(child=>child.firstChild.innerText)));
 }
 
 export const createComment = (commentText) => {
